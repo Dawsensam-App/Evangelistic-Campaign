@@ -3,85 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Countdown to Evangelistic Campaign</title>
+    <title>Evangelistic Campaign Countdown</title>
     <style>
         body {
-            background-color: #0000FF; /* Blue background */
-            color: white;
             font-family: Arial, sans-serif;
+            background-color: #0000ff; /* Blue background */
+            color: #ffffff; /* White text */
             text-align: center;
             padding: 50px;
         }
 
         h1 {
-            color: #FFD700; /* Yellow text */
+            color: #ff0000; /* Red for the heading */
             font-size: 3em;
         }
 
-        #countdown {
-            font-size: 2.5em;
-            margin-bottom: 30px;
+        h2 {
+            color: #ffff00; /* Dark yellow for secondary text */
+            font-size: 2em;
         }
 
-        button {
-            background-color: #FF0000; /* Red buttons */
-            color: white;
-            border: none;
-            padding: 15px 25px;
-            font-size: 1.2em;
-            margin: 10px;
-            cursor: pointer;
-            border-radius: 5px;
+        .countdown {
+            font-size: 4em;
+            margin: 20px 0;
         }
 
-        button:hover {
-            background-color: #FF6347; /* Lighter red on hover */
+        .event-details {
+            font-size: 1.5em;
+            color: #ffffff;
+            margin-bottom: 40px;
+        }
+
+        .highlight {
+            color: #ff0000; /* Red for highlights */
         }
 
         .footer {
-            margin-top: 30px;
+            background-color: #000080; /* Darker blue for the footer */
+            padding: 20px;
+            margin-top: 50px;
+            border-radius: 10px;
+        }
+
+        .footer p {
+            margin: 0;
+            font-size: 1.2em;
+        }
+
+        .invitation {
+            color: #ffff00; /* Yellow for the invitation text */
+            font-size: 1.8em;
+        }
+
+        .designer {
+            color: #ffffff;
+            margin-top: 20px;
             font-size: 1em;
-            color: #FFD700; /* Yellow footer text */
         }
     </style>
 </head>
 <body>
 
     <h1>Evangelistic Campaign Countdown</h1>
+    <h2>Starting on October 12, 2024 at 9:30 A.M</h2>
+    <div class="countdown" id="countdown"></div>
 
-    <div id="countdown"></div>
+    <div class="event-details">
+        There will be:
+        <span class="highlight">Powerful Sermons</span> - 
+        <span class="highlight">Live Worship</span> - 
+        <span class="highlight">Prayer of Deliverance</span> - 
+        <span class="highlight">Gifts</span>
+    </div>
 
-    <button>Powerful Sermons</button>
-    <button>Live Worship</button>
-    <button>Prayer of Deliverance</button>
-    <button>Gifts</button>
+    <div class="invitation">
+        YOU ARE INVITED, MARK YOUR CALENDAR!
+    </div>
 
     <div class="footer">
+        <p>Palm Springs Seventh-day Adventist Church</p>
+        <p>4424 S Military Trail, Lake Worth Beach, FL 33463</p>
+    </div>
+
+    <div class="designer">
         Designed by Sam Dawsen for Palm Springs Seventh-day Adventist Church
     </div>
 
     <script>
-        // Set the date for the campaign
-        var eventDate = new Date("October 12, 2024 09:30:00").getTime();
+        // Set the date for the event
+        var countDownDate = new Date("October 12, 2024 09:30:00").getTime();
 
         // Update the countdown every 1 second
         var countdownFunction = setInterval(function() {
             var now = new Date().getTime();
-            var timeLeft = eventDate - now;
+            var distance = countDownDate - now;
 
-            // Time calculations for days, hours, minutes and seconds
-            var days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-            var hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+            // Calculate days, hours, minutes, and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            // Display the result in the countdown div
-            document.getElementById("countdown").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+            // Display the result
+            document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+            + minutes + "m " + seconds + "s ";
 
-            // If the countdown is finished, display a message
-            if (timeLeft < 0) {
+            // If the countdown is over, show a message
+            if (distance < 0) {
                 clearInterval(countdownFunction);
-                document.getElementById("countdown").innerHTML = "The Event Has Started!";
+                document.getElementById("countdown").innerHTML = "The event is happening now!";
             }
         }, 1000);
     </script>
